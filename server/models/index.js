@@ -9,6 +9,7 @@ module.exports = {
     get: function (callback) {
       // fetch all foods
       // text, username, roomname, id
+      console.log("models/index foods.get is alive");
       var queryStr = 'select * from food';
       db.query(queryStr, function(err, results) {
         callback(err, results);

@@ -63,6 +63,35 @@ angular.module('shortly.services', [])
 
 .factory('Foods', function ($http, $q) {
 
+  var getAll = function () {
+    console.log("services/services.js: Foods.getAll alive!")
+    return $http({
+      method: 'GET',
+      url: 'http://localhost:3000/classes/foods',
+      headers: { "Access-Control-Allow-Headers": "*"}
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+
+
+  //   var getAll = function () {
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/api/links'
+  //   })
+  //   .then(function (resp) {
+  //     return resp.data;
+  //   });
+  // };
+
+
+
+
+
+
   var getExample = function (url, headers) {
     return $http.get(url, headers);
   };
@@ -82,14 +111,14 @@ angular.module('shortly.services', [])
     );
   }
 
-  var getAll = function () {
+  var ZgetAll = function () {
     console.log("services/services.js: Foods.getAll alive")
-    var doLAC = false;
-    if (doLAC) {
+    var doNode = true;
+    if (doNode) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8080/rest/default/demo/v1/demo:customer',
-        headers: { /*  "Access-Control-Allow-Headers": "*", */  "Authorization": "CALiveAPICreator demo_full:1"}
+        url: 'http://127.0.0.1:3000/classes/foods',
+        headers: { "Access-Control-Allow-Headers": "*" /*  "Authorization": "CALiveAPICreator demo_full:1" */}
       })
       .then(function (resp) {
         return resp.data;
@@ -97,7 +126,7 @@ angular.module('shortly.services', [])
     } else {
       var deferred = $q.defer();
       var FoodsObj = [ {name: "Food1", balance: 10}, {name: 'Food2', balance: 20} ];
-      deferred.resolve(custsObj);
+      deferred.resolve(FoodsObj);
       return deferred.promise;
     }
   };

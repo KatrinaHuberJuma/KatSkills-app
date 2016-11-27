@@ -3,8 +3,10 @@ angular.module('shortly', [
   'shortly.links',
   // 'shortly.custs',   // this seems to make it worse, even though it surely must be required
   'shortly.shorten',
+  'shortly.foods',
   'shortly.auth',
-  'ngRoute'
+  'ngRoute',
+
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
@@ -57,10 +59,11 @@ angular.module('shortly', [
     
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
-  //  --- MH sez $httpProvider.interceptors.push('AttachTokens');
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  //  --- MH sez 
+  $httpProvider.interceptors.push('AttachTokens');
+  // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-  // $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+  $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
   $httpProvider.defaults.useXDomain = true; 
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
@@ -92,8 +95,6 @@ angular.module('shortly', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     console.log("app is alive");
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
-    }
+    $location.path('/foods');
   });
 });
