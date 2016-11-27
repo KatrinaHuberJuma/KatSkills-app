@@ -1,0 +1,22 @@
+<div id='container'>
+  <h1>Custs</h1>
+  <table>
+    <th>Food</th><th>Rating</th>
+  <div class="custs">
+    <tr class="custList" ng-repeat="eachFood in data.foods" ng-click="setSelected(eachFood)" >
+          
+        <td><div class="name">{{ eachFood.name }}</div></td>
+        <td><div class="balance">{{ eachFood.balance }}</div></td>     
+    
+    </tr>
+
+  </div>
+  </table>
+  <h2>Selected Food:</h2>
+  
+   
+  selected Name: {{selectedFood.name}}
+ 
+
+  <h2>That's all folks!!!</h2>
+</div>

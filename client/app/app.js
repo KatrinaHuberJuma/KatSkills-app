@@ -25,6 +25,20 @@ angular.module('shortly', [
       authenticate: true
     })
 
+
+
+
+
+    .when('/foods', {
+        templateUrl: 'app/foods/foods.html',
+        controller: 'FoodsController'
+      })
+
+
+
+
+
+
     .when('/links', {
       templateUrl: 'app/links/links.html',
       controller: 'LinksController',
@@ -38,7 +52,7 @@ angular.module('shortly', [
     })
 
     .otherwise({
-      redirectTo: '/links'
+      redirectTo: '/foods'
     });
     
     // We add our $httpInterceptor into the array
