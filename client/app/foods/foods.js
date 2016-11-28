@@ -1,7 +1,6 @@
 angular.module('shortly.foods', [])
 
 .controller('FoodsController', function ($scope, Foods) {
-  // Your code here
 
   $scope.data = {};
 
@@ -9,18 +8,18 @@ angular.module('shortly.foods', [])
     console.log("FoodsController.initializeFoods is alive");
     Foods.getAll()
       .then(function (foods) {
-        $scope.data.foods = foods;
+        $scope.data.foods = foods;  // set up model - big kahuna lives
       })
       .catch(function (error) {
         console.error(error);
       });
   };
 
-  $scope.idSelectedFood = null;
-  $scope.setSelected = function (selected) {
+  // event handler for page's ng-click="setSelected(eachFood)" (see foods.html)
+  $scope.setSelected = function (selected) { 
      console.log("FoodsController.setSelected is alive", arguments, this, selected);
-     $scope.selectedFood = selected;
+     $scope.selectedFood = selected; // add selectedFood into scope, enabling {{selectedFood.name}}
 };
 
   initializeFoods();
-  });
+});

@@ -4,6 +4,7 @@ var controller = require('./controllers');
 // router tells node express what the endpoints are, and what controllers code should be called
 
 var router = require('express').Router(); // framework for node servers
+//.Router is a method from express; configure the router
 
 //Connect controller methods to their corresponding routes
 

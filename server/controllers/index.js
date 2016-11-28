@@ -6,15 +6,15 @@ module.exports = {
 // they call models to do db work
 
   foods: {
-    get: function (req, res) {
+    get: function (req, res) { // req = client input data, res = data return to client 
     // in server/routes.js this method is called controller.foods.get
       console.log('foods.get in server/controller/index.js has been called!');
       models.foods.get(function(err, results) {
       // models.foods has a get method, defined in server/models/index
-        console.log('foods.get callback in server/controller/index results = ', results);
+        console.log('foods.get done, now in callback in server/controller/index results = ', results);
         if (err) { throw "foods.get in server/controller/index.js err: " + err;}
         // if things go wrong, show the error message TODO: where does err come from?
-        res.json(results);
+        res.json(results);  // RETURN THE DATA!
         // is the .json method built in? 
       });
     },

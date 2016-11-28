@@ -1,24 +1,30 @@
 /*
   Elements of Angular app
-    Page.html
+    Page.html -- the view
       eye candy
       Fields (data goes here) - with ng directives for data binding
-      Clicky things (that activate controllers), like buttons
-    Controllers page.js
+      Clicky things (expose events that we wire to controllers), like buttons
+    Controllers <page>.js (|| page.html)
       handlers for events from Page
       In particular, call services to populate model, save model to disk etc
     Model
-      Functions to interact with (RESTful) Server
-        RESTful endpoints => controllers
-        controllers cll models to get data, and convert it to JSON string
+      Functions to interact with (RESTful) Server... 
+      Model exposed via $scope (the big kahuna)
+    THIS FILE:
+      execution starts here - config, launch page
   Angular's BIG DEAL - 2-way Data Binding
       Declarative - just code field directives
       Angular ensure
         1 - changes to model show up on fields
         2 - changes to fields show up on model
   So, the big deal is the model: $scope - elements *are* the data 
+  $scope is the connection between the view and the directives
       Global
       Local (within a div?  variable in controller?)
+
+
+
+
 */
 
 angular.module('shortly', [
@@ -29,10 +35,11 @@ angular.module('shortly', [
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
-  // Used for configuring routes
+  // Used for configuring routes, like the routes file in the server, but for client
   
     .when('/foods', {
-      // when the endpoint is /foods, show client/app/foods/foods.html
+      // when the $location.path is /foods, show client/app/foods/foods.html
+      // $location.path = I want to go here
         templateUrl: 'app/foods/foods.html',
         controller: 'FoodsController'
         // use the FoodsController (client/app/foods/foods.js)
@@ -47,12 +54,12 @@ angular.module('shortly', [
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
   //  --- MH sez 
-  $httpProvider.interceptors.push('AttachTokens');
-  // delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  // $httpProvider.interceptors.push('AttachTokens');
+  // // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-  $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
-  $httpProvider.defaults.useXDomain = true; 
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  // $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+  // $httpProvider.defaults.useXDomain = true; 
+  // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
 })
 .factory('AttachTokens', function ($window) {
@@ -79,6 +86,6 @@ angular.module('shortly', [
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     // Scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events. ---https://docs.angularjs.org/guide/scope
     console.log("app is alive");
-    $location.path('/foods');
+    $location.path('/foods');  // goto foods page
   });
 });

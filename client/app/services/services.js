@@ -4,7 +4,7 @@ angular.module('shortly.services', [])
 .factory('Foods', function ($http, $q) {
 
   var getAll = function () {
-    console.log("services/services.js: Foods.getAll alive!")
+    console.log("services/services.js: Foods.getAll alive!  calling RESTful server...")
     return $http({
       method: 'GET',
       url: 'http://localhost:3000/classes/foods',

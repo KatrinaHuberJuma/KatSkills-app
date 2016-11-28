@@ -4,8 +4,12 @@
     <th>Food</th><th>Rating</th>
   <div class="foods">
     <tr class="foodList" ng-repeat="eachFood in data.foods" ng-click="setSelected(eachFood)" >
+    <!-- data.foods...data is something in $scope, foods is an array of rows 
+
+    when clicked (event) -->
           
         <td><div class="name">{{ eachFood.name }}</div></td>
+        <!-- eachFood is an iterator-a food row. Name is a property -->
         <td><div class="balance">{{ eachFood.balance }}</div></td>     
     
     </tr>
@@ -16,7 +20,7 @@
   
    
   selected Name: {{selectedFood.name}}
-  <table>
+  <!-- <table>
     <th>Food</th><th>Rating</th>
     <div class="foods">
     <tr class="ratingList" ng-repeat="eachRating in data.ratings" ng-click="setSelected(eachRating)" >
@@ -24,7 +28,7 @@
         <td><div class="location">{{ eachRating.location }}</div></td>
         <td><div class="fatigue">{{ eachRating.fatigue }}</div></td>     
     
-    </tr>
+    </tr> -->
 
   <h2>That's all folks!!!</h2>
 </div>
