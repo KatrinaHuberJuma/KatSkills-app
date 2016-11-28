@@ -4,19 +4,23 @@ var db = require('../db');
 // controllers call models to do sql, return results
 
 module.exports = {
+// module.exports makes this object, with all it's sub objects and their methods, 
+// available to other files, in this case /controllers/index.html
 
   foods: {
     get: function (callback) {
-      // fetch all foods
-      // text, username, roomname, id
-      console.log("models/index foods.get is alive");
+      console.log("server/models/index foods.get is being called to select all foods in the food table");
       var queryStr = 'select * from food';
+      // this string makes a sql call
       db.query(queryStr, function(err, results) {
-        callback(err, results);
+      // query is a method on the database object we required in,
+      // query method must come from mysql because it is not defined in the file
+        callback(err, results);  // this returns the results (from db) to controllers callback
+        // TODO: understand how err and results get filled, what is the callback/where it gets filled
       });
     },
     post: function (params, callback) {
-      // create a message for a user id based on the given username TODO proper names
+      //TODO: everything
       var queryStr = 'insert into foods(text, userid, roomname) \
                       value (?, (select id from users where username = ? limit 1), ?)';
       db.query(queryStr, params, function(err, results) {
@@ -27,15 +31,14 @@ module.exports = {
 
 
   ratings: {
-    get: function (callback) {
+    get: function (params, callback) {
       //params = {food: "cake"};
-      console.log("ratings.getForFood alive, params..");
+      console.log("ratings.get alive, params..");
       // fetch all foods
-      // text, username, roomname, id
       // var queryStr = 'SELECT * FROM ratings where food =  \"' + params.food + '\"';
-      var queryStr = 'SELECT * FROM ratings';
-
-      db.query(queryStr, function(err, results) {
+      var queryStr = 'SELECT * FROM ratings WHERE food = ?';
+      // TODO: figure out if this works!
+      db.query(queryStr, params, function(err, results) {
         callback(err, results);
       });
     }

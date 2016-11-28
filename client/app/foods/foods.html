@@ -16,7 +16,15 @@
   
    
   selected Name: {{selectedFood.name}}
- 
+  <table>
+    <th>Food</th><th>Rating</th>
+    <div class="foods">
+    <tr class="ratingList" ng-repeat="eachRating in data.ratings" ng-click="setSelected(eachRating)" >
+          
+        <td><div class="location">{{ eachRating.location }}</div></td>
+        <td><div class="fatigue">{{ eachRating.fatigue }}</div></td>     
+    
+    </tr>
 
   <h2>That's all folks!!!</h2>
 </div>

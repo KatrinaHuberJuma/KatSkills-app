@@ -68,6 +68,7 @@ angular.module('shortly.services', [])
     return $http({
       method: 'GET',
       url: 'http://localhost:3000/classes/foods',
+      // this url goes to where a server is running server/app.js
       headers: { "Access-Control-Allow-Headers": "*"}
     })
     .then(function (resp) {
