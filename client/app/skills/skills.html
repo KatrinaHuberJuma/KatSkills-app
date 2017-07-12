@@ -1,0 +1,34 @@
+<div id='container'>
+  <h1>Skills</h1>
+  <table>
+    <th>Skill</th><th>Rating</th>
+  <div class="skills">
+    <tr class="skillList" ng-repeat="eachSkill in data.skills" ng-click="setSelected(eachSkill)" >
+    <!-- data.skills...data is something in $scope, skills is an array of rows 
+
+    when clicked (event) -->
+          
+        <td><div class="name">{{ eachSkill.name }}</div></td>
+        <!-- eachSkill is an iterator-a skill row. Name is a property -->
+        <td><div class="balance">{{ eachSkill.balance }}</div></td>     
+    
+    </tr>
+
+  </div>
+  </table>
+  <h2>Selected Skill:</h2>
+  
+   
+  selected Name: {{selectedSkill.name}}
+  <!-- <table>
+    <th>Skill</th><th>Rating</th>
+    <div class="skills">
+    <tr class="ratingList" ng-repeat="eachRating in data.skillRatings" ng-click="setSelected(eachRating)" >
+          
+        <td><div class="location">{{ eachRating.location }}</div></td>
+        <td><div class="fatigue">{{ eachRating.fatigue }}</div></td>     
+    
+    </tr> -->
+
+  <h2>That's all folks!!!</h2>
+</div>
