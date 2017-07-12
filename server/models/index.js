@@ -10,10 +10,10 @@ module.exports = {
 // module.exports makes this object, with all it's sub objects and their methods, 
 // available to other files, in this case /controllers/index.html
 
-  foods: {
+  skills: {
     get: function (callback) {
-      console.log("server/models/index foods.get is being called to select all foods in the food table");
-      var queryStr = 'select * from food';
+      console.log("server/models/index skills.get is being called to select all skills in the skill table");
+      var queryStr = 'select * from Skills';
       // query for the sql call just below...
       db.query(queryStr, function(err, results) {
         //sql is a server, accessed via db.query
@@ -25,7 +25,7 @@ module.exports = {
     },
     post: function (params, callback) {
       //TODO: everything
-      var queryStr = 'insert into foods(text, userid, roomname) \
+      var queryStr = 'insert into skills(text, userid, roomname) \
                       value (?, (select id from users where username = ? limit 1), ?)';
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
@@ -34,13 +34,13 @@ module.exports = {
   },
 
 
-  ratings: {
+  projects: {
     get: function (params, callback) {
-      //params = {food: "cake"};
-      console.log("ratings.get alive, params..");
-      // fetch all foods
-      // var queryStr = 'SELECT * FROM ratings where food =  \"' + params.food + '\"';
-      var queryStr = 'SELECT * FROM ratings WHERE food = ?';
+      //params = {skill: "cake"};
+      console.log("projects.get alive, params..");
+      // fetch all skills
+      // var queryStr = 'SELECT * FROM projects where skill =  \"' + params.skill + '\"';
+      var queryStr = 'SELECT * FROM Projects';
       // TODO: figure out if this works!
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
@@ -48,6 +48,7 @@ module.exports = {
     }
     
   }
+
 
 };
 

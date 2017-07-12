@@ -29,7 +29,8 @@
 
 angular.module('shortly', [
   'shortly.services',
-  'shortly.foods',
+  'shortly.skills',
+  'shortly.projects',
   'ngRoute'
 
 ])
@@ -37,17 +38,24 @@ angular.module('shortly', [
   $routeProvider
   // Used for configuring routes, like the routes file in the server, but for client
   
-    .when('/foods', {
-      // when the $location.path is /foods, show client/app/foods/foods.html
+    .when('/skills', {
+      // when the $location.path is /skills, show client/app/skills/skills.html
       // $location.path = I want to go here
-        templateUrl: 'app/foods/foods.html',
-        controller: 'FoodsController'
-        // use the FoodsController (client/app/foods/foods.js)
+        templateUrl: 'app/skills/skills.html',
+        controller: 'SkillsController'
+        // use the SkillsController (client/app/skills/skills.js)
       })
+    // .when('/projects', {
+    //   // when the $location.path is /projects, show client/app/projects/projects.html
+    //   // $location.path = I want to go here
+    //     templateUrl: 'app/projects/projects.html',
+    //     controller: 'ProjectsController'
+    //     // use the ProjectsController (client/app/projects/projects.js)
+    //   })
 
     .otherwise({
-      // if someone puts in the wrong endpoint, redirect to foods
-      redirectTo: '/foods'
+      // if someone puts in the wrong endpoint, redirect to skills
+      redirectTo: '/skills'
     });
     
 
@@ -86,6 +94,26 @@ angular.module('shortly', [
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     // Scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events. ---https://docs.angularjs.org/guide/scope
     console.log("app is alive");
-    $location.path('/foods');  // goto foods page
-  });
+    $location.path('/skills');  // goto skills page
+  })
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

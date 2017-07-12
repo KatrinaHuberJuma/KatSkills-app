@@ -1,3 +1,7 @@
+// router is the doorman
+
+
+
 var controller = require('./controllers');
 // uses methods defined in server/controllers/index.js, therefore require './controllers'
 
@@ -9,10 +13,13 @@ var router = require('express').Router(); // framework for node servers
 //Connect controller methods to their corresponding routes
 
 //          endpoint,    name of the method to call
-router.get('/foods',   controller.foods.get); // server controllers/index.js foods.get
-router.get('/ratings', controller.ratings.get);
+router.get('/skills',   controller.skills.get); // server controllers/index.js skills.get
+// router.get('/ratings', controller.ratings.get);
 
-router.post('/foods', controller.foods.post);  // TODO - move this up, the world stops spinning... WHY??
+
+router.get('/projects',   controller.projects.get);
+
+router.post('/skills', controller.skills.post);  // TODO - move this up, the world stops spinning... WHY??
 
 // use module.exports to make these router methods available to other files that require this file
 module.exports = router;

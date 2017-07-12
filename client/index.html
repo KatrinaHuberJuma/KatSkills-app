@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
-    <h1>Angular Foods</h1>
+    <h1>KatSkills App</h1>
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
@@ -14,14 +14,15 @@
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
 
-    <script src="app/foods/foods.js"></script>
+    <script src="app/skills/skills.js"></script>
+    <script src="app/projects/projects.js"></script>
 
     <script src="app/services/services.js"></script>
     <script src="app/app.js"></script>
     <!-- client/app/app.js (aka 'shortly')
-    dependencies injected: shortly.services, shortly.foods, ngRoute
+    dependencies injected: shortly.services, shortly.skills, ngRoute
     uses $routeProvider (angular) to configure routes
-    when given the endpoint 'foods', plant app/foods/foods.html content in the ng-view directive of this file (line 11)
+    when given the endpoint 'skills', plant app/skills/skills.html content in the ng-view directive of this file (line 11)
     attach tokens TODO: learn more about this! 
     -->
   </body>
