@@ -45,13 +45,13 @@ angular.module('shortly', [
         controller: 'SkillsController'
         // use the SkillsController (client/app/skills/skills.js)
       })
-    // .when('/projects', {
-    //   // when the $location.path is /projects, show client/app/projects/projects.html
-    //   // $location.path = I want to go here
-    //     templateUrl: 'app/projects/projects.html',
-    //     controller: 'ProjectsController'
-    //     // use the ProjectsController (client/app/projects/projects.js)
-    //   })
+    .when('/projects', { // TODO
+      // when the $location.path is /projects, show client/app/projects/projects.html
+      // $location.path = I want to go here
+        templateUrl: 'app/projects/projects.html',
+        controller: 'ProjectsController'
+        // use the ProjectsController (client/app/projects/projects.js)
+      })
 
     .otherwise({
       // if someone puts in the wrong endpoint, redirect to skills
@@ -94,7 +94,7 @@ angular.module('shortly', [
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     // Scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events. ---https://docs.angularjs.org/guide/scope
     console.log("app is alive");
-    $location.path('/skills');  // goto skills page
+    $location.path('/projects');  // goto skills page
   })
 
 });

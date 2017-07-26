@@ -17,23 +17,22 @@ module.exports = {
         res.json(results);  // RETURN THE DATA!
         // is the .json method built in? 
       });
-    },
-    post: function (req, res) {
-    // why does my display of skills break when this is commented out? this doens't even make sense
-      var params = [req.body.message, req.body.username, req.body.roomname];  // TODO proper names
-      models.skills.post(params, function(err, results) {
-        if (err) { throw "skills.post in server/controller/index.js err: " + err; }
-        res.sendStatus(201);
-      });
-    }
+    }//,
+    // post: function (req, res) {
+    // // why does my display of skills break when this is commented out? this doens't even make sense
+    //   var params = [req.body.message, req.body.username, req.body.roomname];  // TODO proper names
+    //   models.skills.post(params, function(err, results) {
+    //     if (err) { throw "skills.post in server/controller/index.js err: " + err; }
+    //     res.sendStatus(201);
+    //   });
+    // }
   },
 
   projects: {
     get: function (req, res) {
       console.log('projects.get in server/controller/index.js is alive ');
-      // var params = [{skill: 'cake'}]; // TODO get params (args)
-      models.projects.get(function(err, results) {
-        console.log('results = ', results);
+      var params = req.query; 
+      models.projects.get(params, function(err, results) {
         if (err) { throw "projects.get in server/controller/index.js err: " + err;}
         res.json(results);
       });

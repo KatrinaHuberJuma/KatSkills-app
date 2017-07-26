@@ -47,7 +47,7 @@ angular.module('shortly.services', [])
     getAll: getAll,
     addOne: addOne
   };
-  })
+})
 
 // 
 .factory('Projects', function ($http, $q) {
@@ -57,6 +57,7 @@ angular.module('shortly.services', [])
     return $http({  // a RESTful API call!
       method: 'GET',
       url: 'http://localhost:3000/classes/projects',
+      params: {id: 2},
       // this url goes to where a server is running server/app.js
       headers: { "Access-Control-Allow-Headers": "*"}
     })
