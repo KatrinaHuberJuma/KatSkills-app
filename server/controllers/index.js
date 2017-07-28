@@ -19,7 +19,6 @@ module.exports = {
       });
     }//,
     // post: function (req, res) {
-    // // why does my display of skills break when this is commented out? this doens't even make sense
     //   var params = [req.body.message, req.body.username, req.body.roomname];  // TODO proper names
     //   models.skills.post(params, function(err, results) {
     //     if (err) { throw "skills.post in server/controller/index.js err: " + err; }
