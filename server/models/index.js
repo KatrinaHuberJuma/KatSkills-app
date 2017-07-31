@@ -38,17 +38,35 @@ module.exports = {
     get: function (params, callback) {
       //params = {skill: "cake"};
       console.log("projects.get alive, params..");
-      console.log(params.id);
       // fetch all skills
       // var queryStr = 'SELECT * FROM projects where skill =  \"' + params.skill + '\"';
-      var queryStr = 'SELECT Projects.* FROM Projects JOIN Project_Skills \
+      try {
+        var queryStr = 'SELECT Projects.* FROM Projects JOIN Project_Skills \
                               on Projects.id = Project_Skills.project_id \
                               WHERE Project_Skills.skill_id = ' + params.id;
+      } 
+      catch(err) {
+        var queryStr = 'SELECT * FROM Projects';
+      }
       // TODO: figure out if this works!
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
       });
-    }
+    }//,
+    // getRelated: function (params, callback) {
+    //   //params = {skill: "cake"};
+    //   console.log("projects.get alive, params..");
+    //   console.log(params.id);
+    //   // fetch all skills
+    //   // var queryStr = 'SELECT * FROM projects where skill =  \"' + params.skill + '\"';
+    //   var queryStr = 'SELECT Projects.* FROM Projects JOIN Project_Skills \
+    //                           on Projects.id = Project_Skills.project_id \
+    //                           WHERE Project_Skills.skill_id = ' + params.id;
+    //   // TODO: figure out if this works!
+    //   db.query(queryStr, params, function(err, results) {
+    //     callback(err, results);
+    //   });
+    // }
     
   }
 

@@ -31,20 +31,42 @@ angular.module('shortly', [
   'ui.router',
   'shortly.services',
   'shortly.skills',
-  'shortly.projects'
+  'shortly.projects',
+  'shortly.relatedProjects'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     
-    .state('skills', {
-      url: '/skills',
-      templateUrl: 'app/skills/skills.html',
-      controller: 'SkillsController'
+    .state('projects', {
+      url: '/projects',
+      templateUrl: 'app/projects/projects.html',
+      controller: 'ProjectsController'
     })
-    
+    // .state('skills.2', {
+    //   url: '/skills/2',
+    //   templateUrl: 'app/skills/skills.html',
+    //   controller: 'RelatedProjectsController'
+    // })
+    // .state('skills', {
+    //     url: "/skills",
+    //     views: {
+    //         "main": {
+    //             templateUrl: 'app/skills/skills.html',
+    //             controller: 'SkillsController'
+    //         },
+    //         'relatedprojects': {
+    //             templateUrl: 'app/skills/skills.html',
+    //             controller: 'RelatedProjectsController'
+    //         }
+    //     }
+    // })
+
+
+
+
   // catch all route
   // send users to the home page
-  $urlRouterProvider.otherwise('/skills');
+  $urlRouterProvider.otherwise('/projects');
 })
 

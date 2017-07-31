@@ -8,7 +8,7 @@ angular.module('shortly.projects', [])
     console.log("ProjectsController.initializeProjects is alive");
     Projects.getAll()
       .then(function (projects) {
-        $scope.data.projects = projects;  // set up/initialize model - big kahuna lives
+        $scope.data.projects = projects;  // set up/initialize model 
       })
       .catch(function (error) {
         console.error(error);
@@ -21,7 +21,7 @@ angular.module('shortly.projects', [])
      $scope.selectedProject = selected; // add selectedProject into scope, enabling {{selectedProject.name}}
      // call ratings service to get projects for selected.name
      // results -> $scope.data.projectRatings
-};
+  };
 
   initializeProjects();
 });
