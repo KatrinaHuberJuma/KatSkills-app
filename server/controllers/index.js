@@ -19,7 +19,6 @@ module.exports = {
       });
     }//,
     // post: function (req, res) {
-    // // why does my display of skills break when this is commented out? this doens't even make sense
     //   var params = [req.body.message, req.body.username, req.body.roomname];  // TODO proper names
     //   models.skills.post(params, function(err, results) {
     //     if (err) { throw "skills.post in server/controller/index.js err: " + err; }
@@ -31,12 +30,29 @@ module.exports = {
   projects: {
     get: function (req, res) {
       console.log('projects.get in server/controller/index.js is alive ');
-      var params = req.query; 
-      models.projects.get(params, function(err, results) {
-        if (err) { throw "projects.get in server/controller/index.js err: " + err;}
-        res.json(results);
-      });
-    }
-  }
+      if (req.query) {
+        models.projects.get(params, function(err, results) {
+          if (err) { throw "projects.getRelated in server/controller/index.js err: " + err;}
+          res.json(results);
+        });
+      } else {
+        var params = false;
+        models.projects.get(params, function(err, results) {
+          if (err) { throw "projects.get in server/controller/index.js err: " + err;}
+          res.json(results);
+        });
+      }
+    }//,
+    // getRelated: function (req, res) {
+    //   console.log('projects.getRelated in server/controller/index.js is alive ');
+    //   var params = req.query; 
+    //   models.projects.getRelated(params, function(err, results) {
+    //     if (err) { throw "projects.getRelated in server/controller/index.js err: " + err;}
+    //     res.json(results);
+    //   });
+    // },
+  },
 
-  };
+
+
+};

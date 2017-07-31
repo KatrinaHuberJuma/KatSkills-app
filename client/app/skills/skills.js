@@ -8,7 +8,7 @@ angular.module('shortly.skills', [])
     console.log("SkillsController.initializeSkills is alive");
     Skills.getAll()
       .then(function (skills) {
-        $scope.data.skills = skills;  // set up/initialize model - big kahuna lives
+        $scope.data.skills = skills;  // set up/initialize model 
       })
       .catch(function (error) {
         console.error(error);

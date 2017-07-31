@@ -57,7 +57,6 @@ angular.module('shortly.services', [])
     return $http({  // a RESTful API call!
       method: 'GET',
       url: 'http://localhost:3000/classes/projects',
-      params: {id: 2},
       // this url goes to where a server is running server/app.js
       headers: { "Access-Control-Allow-Headers": "*"}
     })
@@ -65,6 +64,20 @@ angular.module('shortly.services', [])
       return resp.data;
     });
   };
+
+  // var getRelated = function (skillId) {
+  //   console.log("services/services.js: Projects.getAll alive!  calling RESTful server...")
+  //   return $http({  // a RESTful API call!
+  //     method: 'GET',
+  //     url: 'http://localhost:3000/classes/skills/' + skillId,
+  //     params: {id: skillId},
+  //     // this url goes to where a server is running server/app.js
+  //     headers: { "Access-Control-Allow-Headers": "*"}
+  //   })
+  //   .then(function (resp) {
+  //     return resp.data;
+  //   });
+  // };
 
 
   var getExample = function (url, headers) {
