@@ -10,7 +10,12 @@
           
         <td><div class="name">{{ eachSkill.name }}</div></td>
         <!-- eachSkill is an iterator-a skill row. Name is a property -->
-        <td><a ui-sref="skills.{{eachSkill.id}}">see projects</a><div ui-view="relatedprojects"></div></td>
+        <!-- <td><a ui-sref="skills.{{eachSkill.id}}">see projects</a><div ui-view="relatedprojects"></div></td> -->
+        <!-- <td>
+          <ul class="relatedProjects" ng-repeat="eachRelatedProject in data.relatedProjects">
+            <li class="title">{{ eachRelatedProject.title }}</li>
+          </ul>
+        </td> -->
     
     </tr>
 
@@ -20,7 +25,9 @@
   <h2>Selected Skill:</h2>
   
    
-  selected Name: {{selectedSkill.name}}
+  selected Name: {{selectedSkill.name}} <ul class="relatedProjects" ng-repeat="eachRelatedProject in data.relatedProjects">
+            <li class="title">{{ eachRelatedProject.title }}</li>
+          </ul>
   <!-- <table>
     <th>Skill</th><th>Rating</th>
     <div class="skills">
@@ -31,5 +38,4 @@
     
     </tr> -->
 
-  <h2>That's all folks!!!</h2>
 </div>

@@ -9,7 +9,7 @@
       In particular, call services to populate model, save model to disk etc
     Model
       Functions to interact with (RESTful) Server... 
-      Model exposed via $scope (the big kahuna)
+      Model exposed via $scope 
     THIS FILE:
       execution starts here - config, launch page
   Angular's BIG DEAL - 2-way Data Binding
@@ -31,21 +31,32 @@ angular.module('shortly', [
   'ui.router',
   'shortly.services',
   'shortly.skills',
-  'shortly.projects',
-  'shortly.relatedProjects'
+  'shortly.projects'//,
+  // 'shortly.relatedProjects'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     
-    .state('projects', {
-      url: '/projects',
-      templateUrl: 'app/projects/projects.html',
-      controller: 'ProjectsController'
+    .state('skills', {
+      url: '/skills',
+      
+      views: {
+        'main': {
+          templateUrl: 'app/skills/skills.html',
+          controller: 'SkillsController',
+        }//,
+        // 'relatedprojects': {
+        //   url: '/skills/:skillId',
+        //   templateUrl: 'app/projects/relatedProjects.html',
+        //   controller: 'RelatedProjectsController'
+        // }
+      }
     })
-    // .state('skills.2', {
-    //   url: '/skills/2',
-    //   templateUrl: 'app/skills/skills.html',
+
+    // .state('skills.relatedprojects', {
+    //   url: '/skills/:skillId',
+    //   templateUrl: 'app/projects/projects.html',
     //   controller: 'RelatedProjectsController'
     // })
     // .state('skills', {
@@ -67,6 +78,6 @@ angular.module('shortly', [
 
   // catch all route
   // send users to the home page
-  $urlRouterProvider.otherwise('/projects');
+  $urlRouterProvider.otherwise('/skills');
 })
 
