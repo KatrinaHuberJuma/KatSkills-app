@@ -14,9 +14,10 @@ var router = require('express').Router(); // framework for node servers
 //          endpoint,    name of the method to call
 router.get('/skills',   controller.skills.get); // server controllers/index.js skills.get
 // router.get('/ratings', controller.ratings.get);
-router.get('/skills/?id=:skillId',   controller.skills.get);
+// router.get('/skills/?id=:skillId',   controller.skills.get);
 
 router.get('/projects',   controller.projects.get);
+router.get('/projects?id=:skillId',   controller.projects.get);
 
 // router.post('/skills', controller.skills.post);  // TODO - move this up, the world stops spinning... WHY??
 
