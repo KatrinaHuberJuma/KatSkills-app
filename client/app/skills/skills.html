@@ -1,7 +1,7 @@
 <div id='container'>
   <h1>Skills</h1>
   <table>
-    <th>Skill</th><th>Rating</th>
+    <th>Skill</th>
   <div class="skills">
     <tr class="skillList" ng-repeat="eachSkill in data.skills" ng-click="setSelected(eachSkill)" >
     <!-- data.skills...data is something in $scope, skills is an array of rows 
@@ -26,7 +26,9 @@
   
    
   selected Name: {{selectedSkill.name}} <ul class="relatedProjects" ng-repeat="eachRelatedProject in data.relatedProjects">
-            <li class="title">{{ eachRelatedProject.title }}</li>
+            <li> <a href="{{ eachRelatedProject.github }}" target="blank" class="title">{{ eachRelatedProject.title }}</a>
+              <p>{{ eachRelatedProject.description }}</p>
+            </li>
           </ul>
   <!-- <table>
     <th>Skill</th><th>Rating</th>

@@ -42,7 +42,7 @@ module.exports = {
       // var queryStr = 'SELECT * FROM projects where skill =  \"' + params.skill + '\"';
       try {
         console.log(params.id)
-        var queryStr = 'SELECT Projects.* FROM Projects JOIN Project_Skills \
+        var queryStr = 'SELECT Projects.*, Project_Skills.github, Project_Skills.description FROM Projects JOIN Project_Skills \
                               on Projects.id = Project_Skills.project_id \
                               WHERE Project_Skills.skill_id = ' + params.id;
       } 
