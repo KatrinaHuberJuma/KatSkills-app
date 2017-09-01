@@ -8,15 +8,26 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
-    <h1>KatSkills App</h1>
+  <div class="container contaier-fluid">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="skills">skills</a></li>
+        <li><a ui-sref="projects">projects</a></li>
+    </ul>
+  </nav>
+        <h1>KatSkills App</h1>
 
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ui-view="main"></div>
-    <div ui-view="relatedprojects"></div>
+        
+        <div ui-view="main"></div>
+    </div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js" integrity="sha256-jUHgsHoPXAh7OyogDZWIrwTF8PXRiRg+mdxod+c295k=" crossorigin="anonymous"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/ui-bootstrap/ui-bootstrap.js"></script>
 
     <script src="app/skills/skills.js"></script>
     <script src="app/projects/projects.js"></script>

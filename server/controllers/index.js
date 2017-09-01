@@ -8,6 +8,7 @@ module.exports = {
   skills: {
     get: function (req, res) { // req = client input data, res = data return to client 
     // in server/routes.js this method is called controller.skills.get
+    console.log("hey kat" + req.header)
       console.log('skills.get in server/controller/index.js has been called!');
       models.skills.get(function(err, results) {
       // models.skills has a get method, defined in server/models/index
@@ -31,6 +32,7 @@ module.exports = {
     get: function (req, res) {
       console.log('projects.get in server/controller/index.js is alive ');
       if (req.query) {
+
         var params = req.query;
         models.projects.get(params, function(err, results) {
           if (err) { throw "projects.getRelated in server/controller/index.js err: " + err;}

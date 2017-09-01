@@ -28,6 +28,7 @@
 */
 
 angular.module('shortly', [
+  'ui.bootstrap',
   'ui.router',
   'shortly.services',
   'shortly.skills',
@@ -45,12 +46,18 @@ angular.module('shortly', [
         'main': {
           templateUrl: 'app/skills/skills.html',
           controller: 'SkillsController',
-        }//,
-        // 'relatedprojects': {
-        //   url: '/skills/:skillId',
-        //   templateUrl: 'app/projects/relatedProjects.html',
-        //   controller: 'RelatedProjectsController'
-        // }
+        }
+      }
+    })
+
+    .state('projects', {
+      url: '/projects',
+      
+      views: {
+        'main': {
+          templateUrl: 'app/projects/projects.html',
+          controller: 'ProjectsController',
+        }
       }
     })
 

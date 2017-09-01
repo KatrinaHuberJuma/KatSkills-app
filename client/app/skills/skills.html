@@ -1,14 +1,13 @@
-<div id='container'>
-  <h1>Skills</h1>
+<div class="col-xs-12  col-sm-4">
   <table>
-    <th>Skill</th>
+    <th><h1>Skill:</h1></th>
   <div class="skills">
     <tr class="skillList" ng-repeat="eachSkill in data.skills" ng-click="setSelected(eachSkill)" >
     <!-- data.skills...data is something in $scope, skills is an array of rows 
 
     when clicked (event) -->
           
-        <td><div class="name">{{ eachSkill.name }}</div></td>
+        <td><div class="name"><h4>{{ eachSkill.name }}</h4></div></td>
         <!-- eachSkill is an iterator-a skill row. Name is a property -->
         <!-- <td><a ui-sref="skills.{{eachSkill.id}}">see projects</a><div ui-view="relatedprojects"></div></td> -->
         <!-- <td>
@@ -21,15 +20,17 @@
 
   </div>
   </table>
-  
-  <h2>Selected Skill:</h2>
-  
+</div>
+<div class="col-xs-12 col-sm-8 detail-box">
+  <h3>Selected Skill:</h3>
+  <h2>{{ selectedSkill.name || "click a skill to select" }}</h2>
+  <hr>
    
-  selected Name: {{selectedSkill.name}} <ul class="relatedProjects" ng-repeat="eachRelatedProject in data.relatedProjects">
-            <li> <a href="{{ eachRelatedProject.github }}" target="blank" class="title">{{ eachRelatedProject.title }}</a>
+   <div class="relatedProjects" ng-repeat="eachRelatedProject in data.relatedProjects">
+           <h4><a href="{{ eachRelatedProject.github }}" target="blank" class="title">{{ eachRelatedProject.title }}</a></h4>
               <p>{{ eachRelatedProject.description }}</p>
-            </li>
-          </ul>
+            
+          </div>
   <!-- <table>
     <th>Skill</th><th>Rating</th>
     <div class="skills">

@@ -15,6 +15,7 @@ module.exports = {
       console.log("server/models/index skills.get is being called to select all skills in the skill table");
       var queryStr = 'select * from Skills';
       // query for the sql call just below...
+      console.log("models/index line 18")
       db.query(queryStr, function(err, results) {
         //sql is a server, accessed via db.query
       // query is a method on the database object we required in,
@@ -23,14 +24,14 @@ module.exports = {
         // TODO: understand how err and results get filled, what is the callback/where it gets filled
       });
     },
-    post: function (params, callback) {
-      //TODO: everything
-      var queryStr = 'insert into skills(text, userid, roomname) \
-                      value (?, (select id from users where username = ? limit 1), ?)';
-      db.query(queryStr, params, function(err, results) {
-        callback(err, results);
-      });
-    }
+    // post: function (params, callback) {
+    //   //TODO: everything
+    //   var queryStr = 'insert into skills(text, userid, roomname) \
+    //                   value (?, (select id from users where username = ? limit 1), ?)';
+    //   db.query(queryStr, params, function(err, results) {
+    //     callback(err, results);
+    //   });
+    // }
   },
 
 
@@ -40,13 +41,14 @@ module.exports = {
       console.log("projects.get alive, params..");
       // fetch all skills
       // var queryStr = 'SELECT * FROM projects where skill =  \"' + params.skill + '\"';
-      try {
+      if (params.id !== undefined) {
         console.log(params.id)
-        var queryStr = 'SELECT Projects.*, Project_Skills.github, Project_Skills.description FROM Projects JOIN Project_Skills \
+        var queryStr = 'SELECT Projects.*, Project_Skills.github, Project_Skills.description \
+                              FROM Projects JOIN Project_Skills \
                               on Projects.id = Project_Skills.project_id \
                               WHERE Project_Skills.skill_id = ' + params.id;
       } 
-      catch(err) {
+      else {
         var queryStr = 'SELECT * FROM Projects';
       }
       // TODO: figure out if this works!
