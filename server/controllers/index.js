@@ -6,18 +6,22 @@ module.exports = {
 // they call models to do db work
 
   skills: {
-    get: function (req, res) { // req = client input data, res = data return to client 
-    // in server/routes.js this method is called controller.skills.get
-    console.log("hey kat" + req.header)
-      console.log('skills.get in server/controller/index.js has been called!');
-      models.skills.get(function(err, results) {
-      // models.skills has a get method, defined in server/models/index
-        console.log('skills.get done, now in callback in server/controller/index results = ', results);
-        if (err) { throw "skills.get in server/controller/index.js err: " + err;}
-        // if things go wrong, show the error message TODO: where does err come from?
-        res.json(results);  // RETURN THE DATA!
-        // is the .json method built in? 
-      });
+    get: function (req, res) {
+      console.log('skills.get in server/controller/index.js is alive ');
+      if (req.query) {
+
+        var params = req.query;
+        models.skills.get(params, function(err, results) {
+          if (err) { throw "skills.getRelated in server/controller/index.js err: " + err;}
+          res.json(results);
+        });
+      } else {
+        var params = false;
+        models.skills.get(params, function(err, results) {
+          if (err) { throw "skills.get in server/controller/index.js err: " + err;}
+          res.json(results);
+        });
+      }
     }//,
     // post: function (req, res) {
     //   var params = [req.body.message, req.body.username, req.body.roomname];  // TODO proper names

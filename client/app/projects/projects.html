@@ -1,34 +1,36 @@
-<div id='container'>
-  <h1>Projects</h1>
+
+<div class="col-xs-12  col-sm-4">
   <table>
-    <th>Project</th><th>Rating</th>
+    <th><h1>Project:</h1></th>
   <div class="projects">
     <tr class="projectList" ng-repeat="eachProject in data.projects" ng-click="setSelected(eachProject)" >
     <!-- data.projects...data is something in $scope, projects is an array of rows 
 
     when clicked (event) -->
           
-        <td><div class="title">{{ eachProject.title }}</div></td>
+        <td><div class="name"><h4>{{ eachProject.title }}</h4></div></td>
         <!-- eachProject is an iterator-a project row. Name is a property -->
-        <td><div class="balance">{{ eachProject.balance }}</div></td>     
+        <!-- <td><a ui-sref="projects.{{eachProject.id}}">see skills</a><div ui-view="relatedskills"></div></td> -->
+        <!-- <td>
+          <ul class="relatedSkills" ng-repeat="eachRelatedSkill in data.relatedSkills">
+            <li class="title">{{ eachRelatedSkill.title }}</li>
+          </ul>
+        </td> -->
     
     </tr>
 
   </div>
   </table>
-  <h2>Selected Project:</h2>
-  
+</div>
+<div class="col-xs-12 col-sm-8 detail-box">
+  <h3>Selected Project:</h3>
+  <h2>{{ selectedProject.title || "click a project to select" }}</h2>
+  <hr>
    
-  selected Name: {{selectedProject.title}}
-  <!-- <table>
-    <th>Project</th><th>Rating</th>
-    <div class="projects">
-    <tr class="ratingList" ng-repeat="eachRating in data.projectRatings" ng-click="setSelected(eachRating)" >
-          
-        <td><div class="location">{{ eachRating.location }}</div></td>
-        <td><div class="fatigue">{{ eachRating.fatigue }}</div></td>     
-    
-    </tr> -->
+   <div class="relatedSkills" ng-repeat="eachRelatedSkill in data.relatedSkills">
+           <h4><a href="{{ eachRelatedSkill.github }}" target="blank" class="title">{{ eachRelatedSkill.name }}</a></h4>
+              <p>{{ eachRelatedSkill.description }}</p>
+            
+          </div>
 
-  <h2>That's all folks!!!</h2>
 </div>

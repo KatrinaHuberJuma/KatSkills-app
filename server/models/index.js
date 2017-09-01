@@ -11,27 +11,26 @@ module.exports = {
 // available to other files, in this case /controllers/index.html
 
   skills: {
-    get: function (callback) {
-      console.log("server/models/index skills.get is being called to select all skills in the skill table");
-      var queryStr = 'select * from Skills';
-      // query for the sql call just below...
-      console.log("models/index line 18")
-      db.query(queryStr, function(err, results) {
-        //sql is a server, accessed via db.query
-      // query is a method on the database object we required in,
-      // query method must come from mysql because it is not defined in the file
-        callback(err, results);  // this happens when the db returns the results, we now send to controllers callback
-        // TODO: understand how err and results get filled, what is the callback/where it gets filled
+    get: function (params, callback) {
+      //params = {skill: "cake"};
+      console.log("skills.get alive, params..");
+      // fetch all skills
+      // var queryStr = 'SELECT * FROM skills where skill =  \"' + params.skill + '\"';
+      if (params.id !== undefined) {
+        console.log(params.id)
+        var queryStr = 'SELECT Skills.*, Project_Skills.github, Project_Skills.description \
+                              FROM Skills JOIN Project_Skills \
+                              on Skills.id = Project_Skills.skill_id \
+                              WHERE Project_Skills.project_id = ' + params.id;
+      } 
+      else {
+        var queryStr = 'SELECT * FROM Skills';
+      }
+      // TODO: figure out if this works!
+      db.query(queryStr, params, function(err, results) {
+        callback(err, results);
       });
-    },
-    // post: function (params, callback) {
-    //   //TODO: everything
-    //   var queryStr = 'insert into skills(text, userid, roomname) \
-    //                   value (?, (select id from users where username = ? limit 1), ?)';
-    //   db.query(queryStr, params, function(err, results) {
-    //     callback(err, results);
-    //   });
-    // }
+    }
   },
 
 
