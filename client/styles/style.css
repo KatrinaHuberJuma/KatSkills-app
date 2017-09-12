@@ -45,3 +45,21 @@ li {
   text-align: center;
   margin: 0 auto;
 }
+
+.navbar-inverse {
+    background-color: #2d0f05; 
+    text-align: right;
+    border-radius: 0px;
+
+}
+.navbar-nav {
+    float: right;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #AFBD63;
+    padding-right: 60px;
+}
+
+
+
